@@ -1,0 +1,17 @@
+{
+  "name": "proto",
+  "version": "0.0.1",
+  "devDependencies": {
+    "browser-sync": "^2.4.0",
+    "embittered": "0.0.9",
+    "gulp": "^3.8.11",
+    "gulp-sass": "git://github.com:dlmanning/gulp-sass.git#2.x",
+    "gulp-sourcemaps": "^1.5.1",
+    "gulp-uglify": "^1.1.0",
+    "gulp-util": "*",
+    "gulp-watch": "*",
+    "node-bourbon": "^4.2.1-beta1",
+    "node-neat": "^1.7.1-beta1",
+    "node-refills": "^1.0.1"
+  }
+}
