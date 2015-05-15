@@ -11,7 +11,7 @@ var gulp = require('gulp'),
     spawn = require('child_process').spawn;
 
 /**
- * Wait for jekyll-build, then launch the Server
+ * Wait for jekyll-build, then launch the server
  */
 gulp.task('browser-sync', ['sass', 'jekyll-build'], function() {
   browserSync({
@@ -21,20 +21,26 @@ gulp.task('browser-sync', ['sass', 'jekyll-build'], function() {
   });
 });
 
+/**
+ * Compress custom SASS to CSS and create source maps.
+ */
 gulp.task('sass', function () {
-  return gulp.src('./scss/**/*.scss')
+  return gulp.src('./assets/scss/**/*.scss')
     .pipe(sourcemaps.init())
     .pipe(sass({
       noCache: true,
       outputStyle: "compressed",
       lineNumbers: false,
-      loadPath: './css/*',
+      loadPath: './assets/css/*',
       sourceMap: true
     }))
-    .pipe(sourcemaps.write('./maps'))
-    .pipe(gulp.dest('./css'));
+    .pipe(sourcemaps.write('./assets/maps'))
+    .pipe(gulp.dest('./assets/css'));
 });
 
+/**
+ * Uglify task. Compress JS and create source maps.
+ */
 gulp.task('compress', function() {
   return gulp.src('./js/*.js')
     .pipe(sourcemaps.init())
@@ -43,14 +49,9 @@ gulp.task('compress', function() {
     .pipe(gulp.dest('./js'));
 });
 
-gulp.task('jekyll-serve', function () {
-  var jekyll = spawn('jekyll', ['serve']);
-
-  jekyll.on('exit', function (code) {
-    console.log('---------- Serving static site on 127.0.0.1:4000 ----------')
-  })
-});
-
+/**
+ * Jekyll build task, also triggers a browser reload.
+ */
 gulp.task('jekyll-build', function () {
   var jekyll = spawn('jekyll', ['build']);
 
@@ -60,8 +61,14 @@ gulp.task('jekyll-build', function () {
   })
 });
 
+/**
+ * Watcher keeps an eye on SCSS/JS/MD/HTML changes for rebuilding - _site directory is ignored.
+ */
 gulp.task('watch', function() {
   gulp.watch(['./scss/**/*.scss', './js/**/*.js', './**/*.md', './**/*.html', '!./_site/**', '!./_site/*/**'], ['sass', 'compress', 'jekyll-build']);
 });
 
-gulp.task('default', ['jekyll-serve', 'browser-sync', 'watch']);
+/**
+ * Default task. Instantiate browser-sync and watcher.
+ */
+gulp.task('default', ['browser-sync', 'watch']);
