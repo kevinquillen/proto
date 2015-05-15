@@ -1,5 +1,5 @@
 # exclude from jekyll compilation
-exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md", ".travis.yml",  "node_modules", "scss", "bower_components", "grunt"]
+exclude: [".rvmrc", ".rbenv-version", "README.md", "changelog.md", ".travis.yml",  "node_modules", "scss", "bower_components", "Gulpfile.js", "bower.json", "package.json"]
 
 # Site settings
 title: Site Name
