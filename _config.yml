@@ -1,3 +1,6 @@
+# exclude from jekyll compilation
+exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md", ".travis.yml",  "node_modules", "scss", "bower_components", "grunt"]
+
 # Site settings
 title: Site Name
 email: mail@domain.com
