@@ -1,12 +1,9 @@
 var gulp = require('gulp'),
-    path = require('path'),
-    gutil = require('gulp-util'),
     sass = require('gulp-sass'),
     watch = require('gulp-watch'),
     browserSync = require('browser-sync'),
     sourcemaps = require('gulp-sourcemaps'),
     uglify = require('gulp-uglify'),
-    htmlmin = require('gulp-htmlmin'),
     jekyll = require('gulp-jekyll'),
     spawn = require('child_process').spawn;
 
@@ -71,4 +68,4 @@ gulp.task('watch', function() {
 /**
  * Default task. Instantiate browser-sync and watcher.
  */
-gulp.task('default', ['sass', 'compress', 'browser-sync', 'watch']);
+gulp.task('default', ['browser-sync', 'watch']);
