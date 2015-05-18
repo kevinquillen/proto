@@ -10,7 +10,7 @@ var gulp = require('gulp'),
 /**
  * Wait for jekyll-build, then launch the server
  */
-gulp.task('browser-sync', ['sass', 'jekyll-build'], function() {
+gulp.task('browser-sync', function() {
   browserSync({
     server: {
       baseDir: '_site'
@@ -22,7 +22,7 @@ gulp.task('browser-sync', ['sass', 'jekyll-build'], function() {
  * Compress custom SASS to CSS and create source maps.
  */
 gulp.task('sass', function () {
-  return gulp.src('./assets/scss/**/*.scss')
+  return gulp.src('./assets/scss/**')
     .pipe(sourcemaps.init())
     .pipe(sass({
       noCache: true,
@@ -39,11 +39,11 @@ gulp.task('sass', function () {
  * Uglify task. Compress JS and create source maps.
  */
 gulp.task('compress', function() {
-  return gulp.src('./assets/js/**/*.js')
+  return gulp.src('./assets/scripts/**/*.js')
     .pipe(sourcemaps.init())
     .pipe(uglify())
     .pipe(sourcemaps.write('./maps'))
-    .pipe(gulp.dest('./js'));
+    .pipe(gulp.dest('./assets/js'));
 });
 
 /**
@@ -62,10 +62,10 @@ gulp.task('jekyll-build', ['sass', 'compress'], function () {
  * Watcher keeps an eye on SCSS/JS/MD/HTML changes for rebuilding - _site directory is ignored.
  */
 gulp.task('watch', function() {
-  gulp.watch(['./assets/**', './assets/*/**', './**/*.md', './**/*.html', '!./assets/maps', '!./_site/**', '!./_site/*/**'], ['sass', 'compress', 'jekyll-build']);
+  gulp.watch(['./assets/**', './assets/*/**', './**/*.md', './**/*.html', '!./assets/maps', '!./assets/css', '!./assets/js', '!./_site/**', '!./_site/*/**'], ['jekyll-build']);
 });
 
 /**
  * Default task. Instantiate browser-sync and watcher.
  */
-gulp.task('default', ['browser-sync', 'watch']);
+gulp.task('default', ['jekyll-build', 'browser-sync', 'watch']);
