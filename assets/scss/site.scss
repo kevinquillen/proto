@@ -12,7 +12,9 @@
 @import "../../bower_components/bitters/app/assets/stylesheets/base";
 
 // Import your base style(s) here
-// @import "../assets/scss/base";
+@import "base";
 
 // Import your components here
-// @import "../assets/scss/file";
+@import "components/hero";
+@import "components/flexbox";
+@import "components/footer";
