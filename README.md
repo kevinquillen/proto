@@ -8,6 +8,7 @@ You will need to have npm, Bower, and Gulp.
 Checkout or download the project to your directory of choice. Using terminal, navigate to the directory.
 
 * Run bower install
+* Run npm install
 * Run gulp
 
 Gulp will trigger Jekyll to build a static version of the site files, and any time SCSS, JS, Markdown or HTML files are added or changed,
