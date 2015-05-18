@@ -39,7 +39,7 @@ gulp.task('sass', function () {
  * Uglify task. Compress JS and create source maps.
  */
 gulp.task('compress', function() {
-  return gulp.src('./assets/js/*.js')
+  return gulp.src('./assets/js/**/*.js')
     .pipe(sourcemaps.init())
     .pipe(uglify())
     .pipe(sourcemaps.write('./maps'))
