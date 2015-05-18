@@ -34,7 +34,7 @@ gulp.task('sass', function () {
       loadPath: './assets/css/*',
       sourceMap: true
     }))
-    .pipe(sourcemaps.write('./assets/maps'))
+    .pipe(sourcemaps.write('./maps'))
     .pipe(gulp.dest('./assets/css'));
 });
 
@@ -52,7 +52,7 @@ gulp.task('compress', function() {
 /**
  * Jekyll build task, also triggers a browser reload.
  */
-gulp.task('jekyll-build', function () {
+gulp.task('jekyll-build', ['sass', 'compress'], function () {
   var jekyll = spawn('jekyll', ['build']);
 
   jekyll.on('exit', function (code) {
@@ -65,10 +65,10 @@ gulp.task('jekyll-build', function () {
  * Watcher keeps an eye on SCSS/JS/MD/HTML changes for rebuilding - _site directory is ignored.
  */
 gulp.task('watch', function() {
-  gulp.watch(['./scss/**/*.scss', './js/**/*.js', './**/*.md', './**/*.html', '!./_site/**', '!./_site/*/**'], ['sass', 'compress', 'jekyll-build']);
+  gulp.watch(['./assets/**', './assets/*/**', './**/*.md', './**/*.html', '!./assets/maps', '!./_site/**', '!./_site/*/**'], ['sass', 'compress', 'jekyll-build']);
 });
 
 /**
  * Default task. Instantiate browser-sync and watcher.
  */
-gulp.task('default', ['browser-sync', 'watch']);
+gulp.task('default', ['sass', 'compress', 'browser-sync', 'watch']);
