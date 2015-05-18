@@ -14,6 +14,9 @@ Checkout or download the project to your directory of choice. Using terminal, na
 Gulp will trigger Jekyll to build a static version of the site files, and any time SCSS, JS, Markdown or HTML files are added or changed,
 Jekyll build command will trigger and reload all browsers running off BrowserSync.
 
+Source maps of CSS and JS will be created, so if your browser supports source mapping, you can see where the code is coming from in your
+browsers devtools.
+
 # BrowserSync
 You can open more browsers and point them to http://localhost:3000 to connect to BrowserSync.
 
