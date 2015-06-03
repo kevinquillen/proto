@@ -12,6 +12,6 @@
     "gulp-watch": "*",
     "node-bourbon": "^4.2.1-beta1",
     "node-neat": "^1.7.1-beta1",
-    "node-refills": "^1.0.1",
+    "node-refills": "^1.0.1"
   }
 }
