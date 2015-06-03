@@ -1,8 +1,8 @@
 # Proto
-Proto is a simple tool to help prototype quickly.
+Proto is a simple tool to help stand up and test prototypes quickly.
 
 # Requirements
-You will need to have npm, Bower, and Gulp.
+You will need to have npm, Ruby, Bower, Gulp, and Jekyll.
 
 # Using
 Checkout or download the project to your directory of choice. Using terminal, navigate to the directory.
